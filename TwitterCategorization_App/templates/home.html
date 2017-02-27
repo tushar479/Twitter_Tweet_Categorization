@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet" type="text/css" />
+<style>
+.title {
+font-family: 'Indie Flower', serif;
+font-size: 30px;
+color: #1E90FF;
+}
+h1 {
+font-family: 'Pacifico', serif;
+font-size: 45px;
+color: #1E90FF;
+}
+.center-block {
+  display: block;
+  margin-left: 500px;
+  margin-right: auto;
+}
+.container {
+  width: 940px;
+  .center-block();
+}
+#rcorners2 {
+border-radius: 25px;
+border: 2px solid #73AD21;
+padding: 20px;
+width: 610px;
+height: auto;
+}
+#rcorners3 {
+border-radius: 25px;
+border: 2px solid #73AD21;
+padding: 20px;
+width: 200px;
+height: 80px;
+}
+</style>
+</head>
+<body>
+
+<div class="center-block">
+
+  <div class="col-sm-9">
+      <p class="bg-primary"><h3>Tweets Categorization : Personal, Business</h3></p>
+  </div>
+</div>
+<div class="container">
+<form class="form-inline" action="home" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.as_p }}
+    </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+    <br/>
+</form>
+
+    <div class="row">
+        {% for tweet in Output %}
+
+            <div class="col-md-8"><p id="rcorners2">{{tweet.text}}</p></div>
+            <div class="col-md-4"><p id="rcorners3">{{ tweet.label }}</p></div>
+            <br/>
+        {% endfor %}
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
